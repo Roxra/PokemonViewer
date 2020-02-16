@@ -2,10 +2,11 @@ const url = "https://pokeapi.co/api/v2/pokemon/";
 
 fetch(url).then((response) => response.json()).then(function(data)
 {
-	for (i = 0; i < 4; i++){ //change to length of array later <--
-	document.getElementById("Name" + i).textContent = data.results[i].name
-			
-		 readPokemonInfo(data.results[i].url);
+	for (let i = 0; i < 4; i++) //change to length of array later <--
+	{
+		console.log(data.results)
+		document.getElementById("Name" + i).textContent = data.results[i].name;
+		readPokemonInfo(data.results[i].url, i);
 	}
 	
 		  // $.each(data.results, function(i, result) {
@@ -20,10 +21,17 @@ fetch(url).then((response) => response.json()).then(function(data)
     // });
 });
 
-function readPokemonInfo(Pokeurl)
+function readPokemonInfo(Pokeurl, iter)
 {
 	fetch(Pokeurl).then((response) => response.json()).then(function(data)
 	{
 		console.log(data);
+		document.getElementById("Image" + iter).src = data.sprites.front_default;
+		document.getElementById("Species" + iter).textContent = "nothing" //todo
+		document.getElementById("Type" + iter).textContent = data.types[0].type.name;
+		if (data.types[1] != null)
+		{
+			document.getElementById("Type" + iter).textContent = data.types[0].type.name + " - " + data.types[1].type.name;
+		}
 	});
 }

@@ -2,7 +2,7 @@
   color:white;
   font-family: 'Lato', sans-serif;
   text-shadow: 2px 0 black, -2px 0 black, 0 2px black, 0 -2px black, 1px 1px black, -1px -1px black, -1px 1px black, 1px -1px black;
-  font-size:4em
+  font-size:3em
 }
 
 .Small{
@@ -10,4 +10,8 @@
   font-family: 'Lato', sans-serif;
   text-shadow: 2px 0 black, -2px 0 black, 0 2px black, 0 -2px black, 1px 1px black, -1px -1px black, -1px 1px black, 1px -1px black;
   font-size: 2em;
+}
+
+p:first-letter {
+    text-transform:capitalize;
 }
