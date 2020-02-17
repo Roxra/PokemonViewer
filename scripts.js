@@ -16,9 +16,20 @@ var pokemon =
 }
 ];
 
+$(function() 
+{
+var html = '<div class = row>'
+
+for(var i=0; i<= 19; i++){
+ html+=  '<div class="col-md-2"><div class="thumbnail"><img src="" alt = "Pokemon" id = "Image'+ i + '" class="img-fluid"><div class="caption" id = ' + i + '><p class="Big" id = "Name0">Pokemon</p><p class="Small">Type</p><p class="Small">BaseHP</p><p class="Small">BaseAttack</p><p class="Small">BaseDefence</p><p class="Small">SpecialAttack</p><p class="Small">SpecialDefence</p><p class="Small">Speed</p>     <button type="button" class="btn btn-primary btn-lg btn-block" onClick="favouritePokemon(' + i + ');"> Favourite? </button>	</div></a></div></div>';
+}
+
+$('#container').append(html);
+});
+
 fetch(url).then((response) => response.json()).then(function(data)
 {
-	for (let i = 0; i < 4; i++) //change to length of array later <--
+	for (let i = 0; i < data.results.length; i++) //change to length of array later <--
 	{
 		pokemon.push(new Object());
 		console.log(data.results);
