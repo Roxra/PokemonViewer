@@ -3,6 +3,7 @@ const url = "https://pokeapi.co/api/v2/pokemon/";
 var pokemon = 
 [
 {
+	id: 0,
 	name: "Pokemon",
 	type: "Type",
 	hp: 0,
@@ -24,6 +25,7 @@ fetch(url).then((response) => response.json()).then(function(data)
 		console.log(pokemon);
 		document.getElementById(i).children[0].textContent = data.results[i].name;
 		pokemon[i].name = data.results[i].name;
+		pokemon[i].id = i;
 		readPokemonInfo(data.results[i].url, i);
 	}
 });
@@ -54,4 +56,19 @@ function readPokemonInfo(Pokeurl, iter)
 			pokemon[iter].type = data.types[0].type.name + data.types[1].type.name;
 		}
 	});
+}
+
+function favouritePokemon(id)
+{
+	console.log(id);
+	if (pokemon[id].favourite)
+	{
+		pokemon[id].favourite = false;
+		document.getElementById(id).parentElement.classList.remove("Fave");
+	}
+	else
+	{
+		pokemon[id].favourite = true;
+		document.getElementById(id).parentElement.classList.add("Fave");
+	}
 }
