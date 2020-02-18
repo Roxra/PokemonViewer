@@ -13,13 +13,14 @@ var pokemon =
 	SPAttack: 0,
 	SPDefence: 0,
 	speed: 0,
-	favourite: false
+	favourite: false,
+	comparing: false
 }
 ];
 
 $(function() 
 {
-var html = '<div class = row>'
+var html = ''
 
 for(var i=0; i<= 19; i++){
  html+=  '<div class="col-md-2"><div class="thumbnail"><img src="" alt = "Pokemon" id = "Image'+ i + '" class="img-fluid"><div class="caption" id = ' + i + '><p class="Big" id = "Name0">Pokemon</p><p class="Small">Type</p>'
@@ -87,11 +88,14 @@ function favouritePokemon(id)
 	{
 		pokemon[id].favourite = false;
 		document.getElementById(id).parentElement.classList.remove("Fave");
+		document.getElementById('List' + id).remove();
 	}
 	else
 	{
 		pokemon[id].favourite = true;
 		document.getElementById(id).parentElement.classList.add("Fave");
+		var html = '<li class="list-group-item list-group-item-warning" id = "List'+ id + '" >' + pokemon[id].name + '</li>'
+		$('#FavouriteList').append(html);
 	}
 }
 
@@ -101,6 +105,7 @@ function addToCompare(id)
 	{
 		pokemon[id].comparing = false;
 		document.getElementById(id).parentElement.classList.remove("Compare");
+		document.getElementById('Compare' + id).remove();
 	}
 	else
 	{
@@ -118,6 +123,8 @@ function addToCompare(id)
 		}
 		pokemon[id].comparing = true;
 		document.getElementById(id).parentElement.classList.add("Compare");
+		var html = '<li class="list-group-item list-group-item-success" id = "Compare'+ id + '" >' + pokemon[id].name + '</li>'
+		$('#ComparingList').append(html);
 	}
 	for(let i = 0; i < numberOfPokemon; i++)
 	{
