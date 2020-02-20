@@ -23,17 +23,17 @@ $(function()
 var html = ''
 
 for(var i=0; i<= 19; i++){
- html+=  '<div class="col-md-2"><div class="thumbnail"><img src="" alt = "Pokemon" id = "Image'+ i + '" class="img-fluid"><div class="caption" id = ' + i + '><p class="Big" id = "Name0">Pokemon</p><p class="Small">Type</p>'
+ html+=  '<div class="col-md-2"><div class="thumbnail"><img src="" alt = "Pokemon" id = "Image'+ i + '" class="img-fluid"> <div class="caption" id = ' + i + '><p class="Big" id = "Name0">Pokemon</p><p class="Small">Type</p>'
  html+=  '<p class="Small">BaseHP</p>'
  html+=  '<p class="Small">BaseAttack</p>'
  html+=  '<p class="Small">BaseDefence</p>'
  html+=  '<p class="Small">SpecialAttack</p>'
  html+=  '<p class="Small">SpecialDefence</p>'
  html+=  '<p class="Small">Speed</p>'
- // html+=  '<div class="progress pull-right"> <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">  prog%</div></div>'
- html+=  '<button type="button" class="btn btn-primary btn-lg btn-block" onClick="favouritePokemon(' + i + ');"> Favourite? </button>';
- html+=  '<button type="button" class="btn btn-primary btn-lg btn-block" onClick="addToCompare(' + i + ');"> Compare? </button>	</div></a></div></div>';
-}
+ html+=  '  <div class = text-center>  <div class="btn-group btn-group-lg"> <button type="button" class="btn btn-primary" data-toggle="tooltip" title="Add to favourite Pokemon list!" onClick="favouritePokemon(' + i + ');"> Favourite? </button>';
+ html+=  '<button type="button" class="btn btn-primary" data-toggle="tooltip" title="Compare two Pokemon!" onClick="addToCompare(' + i + ');"> Compare? </button> </div> </div>'
+ html+= '</div></a></div></div>';
+} 
 
 $('#container').append(html);
 });
