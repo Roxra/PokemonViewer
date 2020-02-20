@@ -153,21 +153,21 @@ function comparePokemon(id, id2)
 	console.log("Compare");
 	var html = '<p class = "Small text-center StatsComparison">' + pokemon[id].name + ' VS ' + pokemon[id2].name + '</p>'
 	$('#ComparingList').append(html);
-	var html = '<li class="list-group-item list-group-item-success text-center StatsComparison">' + pokemon[id].name + ': ' + pokemon[id].hp + ' HP ' + pokemon[id2].name + ': ' + pokemon[id2].hp + ' HP ' + '</li>'
+	var html = '<li class="list-group-item list-group-item-success text-center StatsComparison">' + pokemon[id].hp + ' HP | ' + pokemon[id2].hp + ' HP ' + '</li>'
 	$('#ComparingList').append(html);
-	var html = '<li class="list-group-item list-group-item-success text-center StatsComparison">' + pokemon[id].name + ': ' + pokemon[id].attack + ' Attack ' + pokemon[id2].name + ': ' + pokemon[id2].attack + ' Attack ' + '</li>'
+	var html = '<li class="list-group-item list-group-item-success text-center StatsComparison">' + pokemon[id].attack + ' Attack | ' + pokemon[id2].attack + ' Attack ' + '</li>'
 	$('#ComparingList').append(html);
-	var html = '<li class="list-group-item list-group-item-success text-center StatsComparison">' + pokemon[id].name + ': ' + pokemon[id].defence + ' Defence ' + pokemon[id2].name + ': ' + pokemon[id2].defence + ' defence ' + '</li>'
+	var html = '<li class="list-group-item list-group-item-success text-center StatsComparison">' + pokemon[id].defence + ' Defence | ' + pokemon[id2].defence + ' defence ' + '</li>'
 	$('#ComparingList').append(html);
-	var html = '<li class="list-group-item list-group-item-success text-center StatsComparison">' + pokemon[id].name + ': ' + pokemon[id].SPAttack + ' Special Attack ' + pokemon[id2].name + ': ' + pokemon[id2].SPAttack + ' Special Attack ' + '</li>'
+	var html = '<li class="list-group-item list-group-item-success text-center StatsComparison">' + pokemon[id].SPAttack + ' Special Attack | ' + pokemon[id2].SPAttack + ' Special Attack ' + '</li>'
 	$('#ComparingList').append(html);
-	var html = '<li class="list-group-item list-group-item-success text-center StatsComparison">' + pokemon[id].name + ': ' + pokemon[id].SPDefence + ' Special Defence ' + pokemon[id2].name + ': ' + pokemon[id2].SPDefence + ' Special Defence ' + '</li>'
+	var html = '<li class="list-group-item list-group-item-success text-center StatsComparison">' + pokemon[id].SPDefence + ' Special Defence | ' + pokemon[id2].SPDefence + ' Special Defence ' + '</li>'
 	$('#ComparingList').append(html);
-	var html = '<li class="list-group-item list-group-item-success text-center StatsComparison">' + pokemon[id].name + ': ' + pokemon[id].speed + ' Speed ' + pokemon[id2].name + ': ' + pokemon[id2].speed + ' Speed ' + '</li>'
+	var html = '<li class="list-group-item list-group-item-success text-center StatsComparison">' + pokemon[id].speed + ' Speed | ' + pokemon[id2].speed + ' Speed ' + '</li>'
 	$('#ComparingList').append(html);
 	if (pokemon[id].hp > pokemon[id2].hp)
 	{
-		var html = '<li class="list-group-item list-group-item-success text-center StatsComparison">' + pokemon[id].name + ' wins for HP ' + '</li>'
+		var html = '<li class="list-group-item list-group-item-success text-center StatsComparison"> <strong> ' + pokemon[id].name + ' </strong> wins for HP ' + '</li>'
 		$('#ComparingList').append(html);
 	}
 	else if (pokemon[id].hp == pokemon[id2].hp)
@@ -177,12 +177,12 @@ function comparePokemon(id, id2)
 	}
 	else
 	{
-		var html = '<li class="list-group-item list-group-item-success text-center StatsComparison">' + pokemon[id2].name + ' wins for HP ' + '</li>'
+		var html = '<li class="list-group-item list-group-item-success text-center StatsComparison"> <strong>' + pokemon[id2].name + ' </strong> wins for HP ' + '</li>'
 		$('#ComparingList').append(html);
 	}
 	if (pokemon[id].attack > pokemon[id2].attack)
 	{
-		var html = '<li class="list-group-item list-group-item-success text-center StatsComparison">' + pokemon[id].name + ' wins for attack ' + '</li>'
+		var html = '<li class="list-group-item list-group-item-success text-center StatsComparison"> <strong>' + pokemon[id].name + '</strong> wins for attack ' + '</li>'
 		$('#ComparingList').append(html);
 	}
 	else if (pokemon[id].attack == pokemon[id2].attack)
@@ -192,27 +192,27 @@ function comparePokemon(id, id2)
 	}
 	else
 	{
-		var html = '<li class="list-group-item list-group-item-success text-center StatsComparison">' + pokemon[id2].name + ' wins for attack ' + '</li>'
+		var html = '<li class="list-group-item list-group-item-success text-center StatsComparison"> <strong>' + pokemon[id2].name + '</strong> wins for attack ' + '</li>'
 		$('#ComparingList').append(html);
 	}
 	if (pokemon[id].defence > pokemon[id2].defence)
 	{
-		var html = '<li class="list-group-item list-group-item-success text-center StatsComparison">' + pokemon[id].name + ' wins for defence ' + '</li>'
+		var html = '<li class="list-group-item list-group-item-success text-center StatsComparison" > <strong>' + pokemon[id].name + ' </strong> wins for defence ' + '</li>'
 		$('#ComparingList').append(html);
 	}
 	else if (pokemon[id].defence == pokemon[id2].defence)
 	{
-		var html = '<li class="list-group-item list-group-item-success text-center StatsComparison">' + ' They are equal for defence ' + '</li>'
+		var html = '<li class="list-group-item list-group-item-success text-center StatsComparison"> <strong>' + ' They are equal for defence ' + '</strong> </li>'
 		$('#ComparingList').append(html);
 	}
 	else
 	{
-		var html = '<li class="list-group-item list-group-item-success text-center StatsComparison">' + pokemon[id2].name + ' wins for defence ' + '</li>'
+		var html = '<li class="list-group-item list-group-item-success text-center StatsComparison"> <strong>' + pokemon[id2].name + '</strong> wins for defence ' + '</li>'
 		$('#ComparingList').append(html);
 	}
 	if (pokemon[id].SPAttack > pokemon[id2].SPAttack)
 	{
-		var html = '<li class="list-group-item list-group-item-success text-center StatsComparison">' + pokemon[id].name + ' wins for Special Attack ' + '</li>'
+		var html = '<li class="list-group-item list-group-item-success text-center StatsComparison"> <strong>' + pokemon[id].name + '</strong> wins for Special Attack ' + '</li>'
 		$('#ComparingList').append(html);
 	}
 	else if (pokemon[id].SPAttack == pokemon[id2].SPAttack)
@@ -222,12 +222,12 @@ function comparePokemon(id, id2)
 	}
 	else
 	{
-		var html = '<li class="list-group-item list-group-item-success text-center StatsComparison">' + pokemon[id2].name + ' wins for Special Attack ' + '</li>'
+		var html = '<li class="list-group-item list-group-item-success text-center StatsComparison"> <strong>' + pokemon[id2].name + '</strong> wins for Special Attack ' + '</li>'
 		$('#ComparingList').append(html);
 	}
 	if (pokemon[id].SPDefence > pokemon[id2].SPDefence)
 	{
-		var html = '<li class="list-group-item list-group-item-success text-center StatsComparison">' + pokemon[id].name + ' wins for Special Defence ' + '</li>'
+		var html = '<li class="list-group-item list-group-item-success text-center StatsComparison"> <strong>' + pokemon[id].name + '</strong> wins for Special Defence ' + '</li>'
 		$('#ComparingList').append(html);
 	}
 	else if (pokemon[id].SPDefence == pokemon[id2].SPDefence)
@@ -237,12 +237,12 @@ function comparePokemon(id, id2)
 	}
 	else
 	{
-		var html = '<li class="list-group-item list-group-item-success text-center StatsComparison">' + pokemon[id2].name + ' wins for Special Defence ' + '</li>'
+		var html = '<li class="list-group-item list-group-item-success text-center StatsComparison"> <strong>' + pokemon[id2].name + '</strong> wins for Special Defence ' + '</li>'
 		$('#ComparingList').append(html);
 	}
 	if (pokemon[id].speed > pokemon[id2].speed)
 	{
-		var html = '<li class="list-group-item list-group-item-success text-center StatsComparison">' + pokemon[id].name + ' wins for speed ' + '</li>'
+		var html = '<li class="list-group-item list-group-item-success text-center StatsComparison"> <strong>' + pokemon[id].name + '</strong> wins for speed ' + '</li>'
 		$('#ComparingList').append(html);
 	}
 	else if (pokemon[id].speed == pokemon[id2].speed)
@@ -252,7 +252,7 @@ function comparePokemon(id, id2)
 	}
 	else
 	{
-		var html = '<li class="list-group-item list-group-item-success text-center StatsComparison">' + pokemon[id2].name + ' wins for speed ' + '</li>'
+		var html = '<li class="list-group-item list-group-item-success text-center StatsComparison"> <strong>' + pokemon[id2].name + '</strong> wins for speed ' + '</li>'
 		$('#ComparingList').append(html);
 	}
 }
