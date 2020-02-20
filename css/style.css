@@ -16,6 +16,10 @@ p {
   text-transform:capitalize;
 }
 
+li {
+  text-transform:capitalize;
+}
+
 body {
   background-color:#4ae09c
 }
@@ -26,4 +30,8 @@ body {
 
 .Compare{
   background-color:#00FA9A
+}
+
+.list-group-item {
+    padding: 5px 10px
 }
