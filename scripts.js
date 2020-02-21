@@ -1,5 +1,6 @@
 const url = "https://pokeapi.co/api/v2/pokemon/";
 var numberOfPokemon;
+var offset = 0;
 
 var pokemon = 
 [
@@ -22,8 +23,8 @@ $(function()
 {
 var html = ''
 
-for(var i=0; i<= 19; i++){
- html+=  '<div class="col-md-2"><div class="thumbnail"><img src="" alt = "Pokemon" id = "Image'+ i + '" class="img-fluid"> <div class="caption" id = ' + i + '><p class="Big" id = "Name0">Pokemon</p><p class="Small">Type</p>'
+for(var i=0; i<= 800; i++){
+ html+=  '<div class="col-md-2"><div class="thumbnail"><img src="" alt = "Pokemon" id = "Image'+ i + '" class="img-fluid"> <div class="caption" id = ' + i + '><p class="Big">Pokemon</p><p class="Small">Type</p>'
  html+=  '<p class="Small">BaseHP</p>'
  html+=  '<p class="Small">BaseAttack</p>'
  html+=  '<p class="Small">BaseDefence</p>'
@@ -38,26 +39,29 @@ for(var i=0; i<= 19; i++){
 $('#container').append(html);
 });
 
-fetch(url).then((response) => response.json()).then(function(data)
-{
-	for (let i = 0; i < data.results.length; i++) //change to length of array later <--
+getPokemonData(url);
+
+function getPokemonData(tempUrl){
+	fetch(tempUrl).then((response) => response.json()).then(function(data)
 	{
-		pokemon.push(new Object());
-		console.log(data.results);
-		console.log(pokemon);
-		document.getElementById(i).children[0].textContent = data.results[i].name;
-		pokemon[i].name = data.results[i].name;
-		pokemon[i].id = i;
-		numberOfPokemon = data.results.length;
-		readPokemonInfo(data.results[i].url, i);
-	}
-});
+		numberOfPokemon = data.results.length + offset;
+		for (let i = 0 + offset; i < data.results.length + offset; i++)
+		{
+			pokemon.push(new Object());
+			document.getElementById(i).children[0].textContent = data.results[i - offset].name;
+			pokemon[i].name = data.results[i - offset].name;
+			pokemon[i].id = i;
+			readPokemonInfo(data.results[i - offset].url, i);
+		}
+		offset = offset + data.results.length;
+		getPokemonData(data.next);
+	});
+}
 
 function readPokemonInfo(Pokeurl, iter)
 {
 	fetch(Pokeurl).then((response) => response.json()).then(function(data)
 	{
-		console.log(data);
 		document.getElementById("Image" + iter).src = data.sprites.front_default;
 		document.getElementById(iter).children[1].textContent = data.types[0].type.name;
 		pokemon[iter].type = data.types[0].type.name;
@@ -83,7 +87,6 @@ function readPokemonInfo(Pokeurl, iter)
 
 function favouritePokemon(id)
 {
-	console.log(id);
 	if (pokemon[id].favourite)
 	{
 		pokemon[id].favourite = false;
