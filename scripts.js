@@ -259,4 +259,5 @@ function comparePokemon(id, id2)
 		var html = '<li class="list-group-item list-group-item-success text-center StatsComparison"> <strong>' + pokemon[id2].name + '</strong> wins for speed ' + '</li>'
 		$('#ComparingList').append(html);
 	}
+	document.getElementById("home").scrollIntoView({behavior: "smooth"});
 }
