@@ -30,8 +30,8 @@ for(var i=0; i<= 19; i++){
  html+=  '<p class="Small">SpecialAttack</p>'
  html+=  '<p class="Small">SpecialDefence</p>'
  html+=  '<p class="Small">Speed</p>'
- html+=  '  <div class = text-center>  <div class="btn-group btn-group-lg"> <button type="button" class="btn btn-primary" data-toggle="tooltip" title="Add to favourite Pokemon list!" onClick="favouritePokemon(' + i + ');"> Favourite? </button>';
- html+=  '<button type="button" class="btn btn-primary" data-toggle="tooltip" title="Compare two Pokemon!" onClick="addToCompare(' + i + ');"> Compare? </button> </div> </div>'
+ html+=  '  <div class = text-center>  <div class="btn-group btn-group-lg"> <button type="button" class="btn btn-primary" data-toggle="tooltip" title="Add to favourite Pokemon list!" id = "FaveBtn' + i + '"  onClick="favouritePokemon(' + i + ');"> Favourite? </button>';
+ html+=  '<button type="button" class="btn btn-primary" data-toggle="tooltip" title="Compare two Pokemon!" id = "CompareBtn' + i + '" onClick="addToCompare(' + i + ');"> Compare? </button> </div> </div>'
  html+= '</div></a></div></div>';
 } 
 
@@ -73,7 +73,7 @@ function readPokemonInfo(Pokeurl, iter)
 		pokemon[iter].SPDefence = data.stats[1].base_stat;
 		document.getElementById(iter).children[7].textContent = "Speed: " +  data.stats[0].base_stat;
 		pokemon[iter].speed = data.stats[0].base_stat;
-		if (data.types[1] != null)
+		if (data.types[1] != null) //if multi-type
 		{
 			document.getElementById(iter).children[1].textContent = data.types[0].type.name + " - " + data.types[1].type.name;
 			pokemon[iter].type = data.types[0].type.name + data.types[1].type.name;
@@ -89,6 +89,7 @@ function favouritePokemon(id)
 		pokemon[id].favourite = false;
 		document.getElementById(id).parentElement.classList.remove("Fave");
 		document.getElementById('List' + id).remove();
+		$('#FaveBtn' + id).text("Favourite?");
 	}
 	else
 	{
@@ -96,6 +97,7 @@ function favouritePokemon(id)
 		document.getElementById(id).parentElement.classList.add("Fave");
 		var html = '<li class="list-group-item list-group-item-warning" id = "List'+ id + '" >' + pokemon[id].name + '</li>'
 		$('#FavouriteList').append(html);
+		$('#FaveBtn' + id).text("Favourited");
 	}
 }
 
@@ -107,9 +109,10 @@ function addToCompare(id)
 		pokemon[id].comparing = false;
 		document.getElementById(id).parentElement.classList.remove("Compare");
 		$('.StatsComparison').remove();
+		$('#CompareBtn' + id).text("Compare?");
 		for(let i = 0; i < numberOfPokemon; i++)
 		{
-			if (pokemon[i].comparing)
+			if (pokemon[i].comparing) //if still comparing one pokemon
 			{
 				document.getElementById(i).parentElement.classList.add("Compare");
 				var html = '<li class="list-group-item list-group-item-success" id = "Compare'+ i + '" >' + pokemon[i].name + '</li>'
@@ -134,6 +137,7 @@ function addToCompare(id)
 		}
 		pokemon[id].comparing = true;
 		document.getElementById(id).parentElement.classList.add("Compare");
+		$('#CompareBtn' + id).text("Comparing");
 		var html = '<li class="list-group-item list-group-item-success" id = "Compare'+ id + '" >' + pokemon[id].name + '</li>'
 		$('#ComparingList').append(html);
 	}
@@ -145,7 +149,7 @@ function addToCompare(id)
 		}
 	}
 }
-
+		
 function comparePokemon(id, id2)
 {
 	document.getElementById('Compare' + id).remove();

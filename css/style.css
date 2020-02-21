@@ -2,14 +2,16 @@
   color:white;
   font-family: 'Lato', sans-serif;
   text-shadow: 2px 0 black, -2px 0 black, 0 2px black, 0 -2px black, 1px 1px black, -1px -1px black, -1px 1px black, 1px -1px black;
-  font-size:3em;
+  font-size:2.2vw;
+  word-wrap:break-word;
 }
 
 .Small{
   color:white;
   font-family: 'Lato', sans-serif;
   text-shadow: 2px 0 black, -2px 0 black, 0 2px black, 0 -2px black, 1px 1px black, -1px -1px black, -1px 1px black, 1px -1px black;
-  font-size: 1.5em;
+  font-size: 1.1vw;
+  word-wrap:break-word;
 }
 
 p {
