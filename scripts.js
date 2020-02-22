@@ -20,16 +20,16 @@ var pokemon =
 }
 ];
 
-createThumbnails();
+createThumbnails(); //create initial empty boxes
 
  $(window).scroll(function () {
-    if ($(document).height()  - 500 <= $(window).scrollTop() + $(window).height()) 
+    if ($(document).height()  - 500 <= $(window).scrollTop() + $(window).height())  //if bottom of the page
 	{
 		getPokemonData(nextUrl);
     }
  });
  
- function createThumbnails()
+ function createThumbnails() //create empty boxes with no data
  {
 	var html = ''
 		html+=  '<div class="col-md-2"><div class="thumbnail"><img src="" alt = "Pokemon" id = "Image'+ numberOfPokemon + '" class="img-fluid"> <div class="caption" id = ' + numberOfPokemon + '><p class="Big">Pokemon</p><p class="Small">Type</p>'
@@ -47,7 +47,7 @@ createThumbnails();
 
 getPokemonData(url);
 
-function getPokemonData(tempUrl)
+function getPokemonData(tempUrl) //read data from API and assign to pokemon class object as well as thumbnail
 {
 	fetch(tempUrl).then((response) => response.json()).then(function(data)
 	{
@@ -66,7 +66,7 @@ function getPokemonData(tempUrl)
 	});
 }
 
-function readPokemonInfo(Pokeurl, iter)
+function readPokemonInfo(Pokeurl, iter) //read detailed data from api about specific pokemon
 {
 	fetch(Pokeurl).then((response) => response.json()).then(function(data)
 	{
@@ -115,7 +115,7 @@ function favouritePokemon(id)
 function addToCompare(id)
 {
 	let numComparing = 0;
-	if (pokemon[id].comparing)
+	if (pokemon[id].comparing) //if want to stop comparing
 	{
 		pokemon[id].comparing = false;
 		document.getElementById(id).parentElement.classList.remove("Compare");
@@ -154,7 +154,7 @@ function addToCompare(id)
 	}
 	for(let i = 0; i < numberOfPokemon; i++)
 	{
-		if (pokemon[i].comparing && i != id && numComparing === 1)
+		if (pokemon[i].comparing && i != id && numComparing === 1) //checks if 2 want to be compared
 		{
 			comparePokemon(id,i)
 		}
@@ -165,7 +165,6 @@ function comparePokemon(id, id2)
 {
 	document.getElementById('Compare' + id).remove();
 	document.getElementById('Compare' + id2).remove();
-	console.log("Compare");
 	var html = '<p class = "Small text-center StatsComparison">' + pokemon[id].name + ' VS ' + pokemon[id2].name + '</p>'
 	$('#ComparingList').append(html);
 	var html = '<li class="list-group-item list-group-item-success text-center StatsComparison">' + pokemon[id].hp + ' HP | ' + pokemon[id2].hp + ' HP ' + '</li>'
