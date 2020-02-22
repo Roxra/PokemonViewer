@@ -25,31 +25,24 @@ createThumbnails();
  $(window).scroll(function () {
     if ($(document).height()  - 500 <= $(window).scrollTop() + $(window).height()) 
 	{
-		if ($('.thumbnail').length - 3 < numberOfPokemon)
-		{
-			createThumbnails();
-		}
+		getPokemonData(nextUrl);
     }
  });
  
  function createThumbnails()
  {
 	var html = ''
-	for(var i=0 + offset; i<= 19 + offset; i++)
-	{
-		html+=  '<div class="col-md-2"><div class="thumbnail"><img src="" alt = "Pokemon" id = "Image'+ i + '" class="img-fluid"> <div class="caption" id = ' + i + '><p class="Big">Pokemon</p><p class="Small">Type</p>'
+		html+=  '<div class="col-md-2"><div class="thumbnail"><img src="" alt = "Pokemon" id = "Image'+ numberOfPokemon + '" class="img-fluid"> <div class="caption" id = ' + numberOfPokemon + '><p class="Big">Pokemon</p><p class="Small">Type</p>'
 		html+=  '<p class="Small">BaseHP</p>'
 		html+=  '<p class="Small">BaseAttack</p>'
 		html+=  '<p class="Small">BaseDefence</p>'
 		html+=  '<p class="Small">SpecialAttack</p>'
 		html+=  '<p class="Small">SpecialDefence</p>'
 		html+=  '<p class="Small">Speed</p>'
-		html+=  '  <div class = text-center>  <div class="btn-group btn-group-lg"> <button type="button" class="btn btn-primary" data-toggle="tooltip" title="Add to favourite Pokemon list!" id = "FaveBtn' + i + '"  onClick="favouritePokemon(' + i + ');"> Favourite? </button>';
-		html+=  '<button type="button" class="btn btn-primary" data-toggle="tooltip" title="Compare two Pokemon!" id = "CompareBtn' + i + '" onClick="addToCompare(' + i + ');"> Compare? </button> </div> </div>'
-		html+= '</div></a></div></div>';
-	}		 
+		html+=  '  <div class = text-center>  <div class="btn-group btn-group-lg"> <button type="button" class="btn btn-primary" data-toggle="tooltip" title="Add to favourite Pokemon list!" id = "FaveBtn' + numberOfPokemon + '"  onClick="favouritePokemon(' + numberOfPokemon + ');"> Favourite? </button>';
+		html+=  '<button type="button" class="btn btn-primary" data-toggle="tooltip" title="Compare two Pokemon!" id = "CompareBtn' + numberOfPokemon + '" onClick="addToCompare(' + numberOfPokemon + ');"> Compare? </button> </div> </div>'
+		html+= '</div></a></div></div>';		 
 	$('#container').append(html);
-	getPokemonData(nextUrl);
  }
 
 getPokemonData(url);
@@ -60,11 +53,12 @@ function getPokemonData(tempUrl)
 	{
 		for (let i = 0 + offset; i < data.results.length + offset; i++)
 		{
+			numberOfPokemon++;
+			createThumbnails();
 			pokemon.push(new Object());
 			document.getElementById(i).children[0].textContent = data.results[i - offset].name;
 			pokemon[i].name = data.results[i - offset].name;
 			pokemon[i].id = i;
-			numberOfPokemon++;
 			readPokemonInfo(data.results[i - offset].url, i);
 		}
 		offset = offset + data.results.length;
